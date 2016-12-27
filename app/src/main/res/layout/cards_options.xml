@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="30dp">
+
+
+        <TextView
+            style="@style/questionMark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/info_deck_amount"
+            android:clickable="true"
+            android:text="@string/questionmark"
+            android:layout_weight="1"
+            />
+
+
+        <TextView
+            style="@style/infoText"
+            android:id="@+id/text_deck_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/deckAmountText"
+            android:layout_weight="1"
+            />
+
+        <NumberPicker
+            android:id="@+id/deckChooser"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:layout_marginRight="30dp"
+            >
+        </NumberPicker>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/questionMark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/info_jokers"
+            android:clickable="true"
+            android:text="@string/questionmark"
+            android:layout_weight="1"
+            />
+
+        <TextView
+            style="@style/infoText"
+            android:id="@+id/text_jokers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/jokers"
+            android:layout_weight="1"
+            />
+
+        <Switch
+            android:id="@+id/jokerChooser"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginRight="30dp"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/questionMark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/info_returnretain"
+            android:clickable="true"
+            android:text="@string/questionmark"
+            android:layout_weight="1"
+            />
+
+
+        <TextView
+            style="@style/infoText"
+            android:id="@+id/text_returnretain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/returnretain"
+            android:layout_weight="1"
+            />
+
+        <Switch
+            android:id="@+id/returnchooser"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginRight="30dp"
+            />
+
+
+    </LinearLayout>
+</LinearLayout>

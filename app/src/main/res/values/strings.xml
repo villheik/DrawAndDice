@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Draw &amp; Dice</string>
+    <string name="main_menu_text">"Draw \u0026 Dice"</string>
+    <string name="cards_button">Cards</string>
+    <string name="dice_button">Dice</string>
+    <string name="coin_button">Coin</string>
+    <string name="about_button">About</string>
+    <string name="questionmark">\?</string>
+    <string name="deckAmountText">Amount of decks used\?</string>
+    <string name="jokers">Jokers\?</string>
+    <string name="returnretain">Return or retain\?</string>
+</resources>
