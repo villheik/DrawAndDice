@@ -1,21 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:weightSum="1">
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="start">
+        android:layout_gravity="start"
+        android:layout_weight="1"
+        android:layout_marginLeft="50dp"
+        android:paddingTop="40dp"
+        android:orientation="vertical">
 
+        <ImageButton
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_background"
+            android:id="@+id/notFlipped"
+            android:background="@null"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            android:layout_marginBottom="20dp"
+            />
 
+        <ImageView
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_ca"
+            android:id="@+id/flipped"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="end">
+        android:layout_weight="1"
+        android:layout_marginTop="5dp"
+        android:orientation="vertical">
+
+        <ImageButton
+            android:id="@+id/card_settings"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_settings_black_24dp"
+            android:background="@null"
+            android:scaleType="fitCenter"
+            android:layout_marginLeft="70dp"
+            />
+
+        <ImageView
+            android:layout_marginTop="300dp"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_ck"
+            android:id="@+id/previous"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            android:layout_marginRight="30dp"
+            />
     </LinearLayout>
 </LinearLayout>

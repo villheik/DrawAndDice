@@ -9,4 +9,6 @@
     <string name="deckAmountText">Amount of decks used\?</string>
     <string name="jokers">Jokers\?</string>
     <string name="returnretain">Return or retain\?</string>
+    <string name="diceAmountText">Amount of dice\?</string>
+    <string name="typeOfDice">Type of dice\?</string>
 </resources>

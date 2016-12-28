@@ -11,33 +11,30 @@
         android:orientation="horizontal"
         android:layout_marginTop="30dp">
 
-
         <TextView
             style="@style/questionMark"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/info_deck_amount"
+            android:id="@+id/info_diceAmount"
             android:clickable="true"
             android:text="@string/questionmark"
-
             />
-
 
         <TextView
             style="@style/infoText"
             android:id="@+id/text_deck_amount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/deckAmountText"
-            android:layout_weight="1"
+            android:text="@string/diceAmountText"
+
             />
 
         <NumberPicker
             android:id="@+id/deckChooser"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_marginRight="30dp"
+
+            android:layout_marginLeft="55dp"
             >
         </NumberPicker>
     </LinearLayout>
@@ -45,13 +42,15 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginTop="30dp"
+        android:weightSum="1">
 
         <TextView
             style="@style/questionMark"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/info_jokers"
+            android:id="@+id/info_diceType"
             android:clickable="true"
             android:text="@string/questionmark"
 
@@ -59,53 +58,20 @@
 
         <TextView
             style="@style/infoText"
-            android:id="@+id/text_jokers"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@string/jokers"
-            android:layout_weight="1"
-            />
-
-        <Switch
-            android:id="@+id/jokerChooser"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:layout_marginRight="30dp"
-            />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            style="@style/questionMark"
+            android:id="@+id/text_typeOfDice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/info_returnretain"
-            android:clickable="true"
-            android:text="@string/questionmark"
+            android:text="@string/typeOfDice"
             />
 
 
-        <TextView
-            style="@style/infoText"
-            android:id="@+id/text_returnretain"
+        <NumberPicker
+            android:id="@+id/diceTypeChooser"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/returnretain"
-            android:layout_weight="1"
-            />
-
-        <Switch
-            android:id="@+id/returnchooser"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:layout_marginRight="30dp"
-            />
-
-
+            android:layout_height="match_parent"
+            android:layout_marginLeft="80dp"
+            >
+        </NumberPicker>
     </LinearLayout>
+
 </LinearLayout>
