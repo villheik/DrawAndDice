@@ -116,7 +116,7 @@ public class cardView extends AppCompatActivity implements View.OnClickListener 
         if (!drawButton.isClickable()) drawButton.setClickable(true);
 
         previousCard.setImageResource(R.drawable.ic_previouscard);
-        currentCard.setImageResource(R.drawable.ic_draw);
+        currentCard.setImageResource(R.drawable.ic_draw_empty);
     }
 
     private final static Random random = new Random();
