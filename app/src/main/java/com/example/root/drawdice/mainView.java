@@ -29,6 +29,7 @@ public class mainView extends AppCompatActivity {
         editor.putBoolean("returnCards", true);
         editor.putInt("diceType", 6);
         editor.putInt("diceAmount", 1);
+        editor.putInt("diceTypeSpinnerPos", 1);
 
         editor.apply();
 

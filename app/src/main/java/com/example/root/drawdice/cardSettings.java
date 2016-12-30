@@ -1,21 +1,24 @@
 package com.example.root.drawdice;
 
 import android.app.Activity;
+import android.app.DialogFragment;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.NumberPicker;
 import android.widget.Switch;
+import android.widget.TextView;
 
 /**
  * Created by keios on 29.12.2016.
  */
 
-//Aktiviteetti korttien asetuksille (pakkojen määrä, jokerit ja palautetaanko kortti vedettyä pakkaan)
-public class cardSettings extends Activity {
+//Aktiviteetti korttien asetuksille (pakkojen määrä, jokerit ja palautetaanko vedetty kortti pakkaan)
+public class cardSettings extends Activity implements View.OnClickListener{
     NumberPicker deckAmount;
     Switch removeOrRetain; Switch jokers;
-
+    TextView deckAmountToolTip; TextView jokersToolTip; TextView returnToolTip;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +34,7 @@ public class cardSettings extends Activity {
 
         deckAmount.setMinValue(1);
         deckAmount.setMaxValue(5);
-        deckAmount.setWrapSelectorWheel(true);
+        deckAmount.setWrapSelectorWheel(false);
 
         int deckAmountPref = prefs.getInt("deckAmount", 1);
         boolean jokerPref = prefs.getBoolean("jokers", true);
@@ -41,6 +44,13 @@ public class cardSettings extends Activity {
         jokers.setChecked(jokerPref);
         removeOrRetain.setChecked(returnPref);
 
+        deckAmountToolTip   =(TextView) findViewById(R.id.info_deck_amount);
+        jokersToolTip       =(TextView) findViewById(R.id.info_jokers);
+        returnToolTip       =(TextView) findViewById(R.id.info_returnretain);
+
+        deckAmountToolTip.setOnClickListener(this);
+        jokersToolTip.setOnClickListener(this);
+        returnToolTip.setOnClickListener(this);
 
         deckAmount.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
@@ -66,6 +76,27 @@ public class cardSettings extends Activity {
             }
         });
 
+
+    }
+
+    @Override
+    public void onClick(View v){
+        DialogFragment deckAmountInfo = new deckAmountDialog();
+        DialogFragment jokerInfo = new jokerDialog();
+        DialogFragment returnInfo = new returnDialog();
+        switch (v.getId()){
+            case (R.id.info_deck_amount):
+                deckAmountInfo.show(getFragmentManager(), "deckAmountInfo");
+                return;
+            case (R.id.info_jokers):
+                jokerInfo.show(getFragmentManager(), "jokerInfo");
+                return;
+            case (R.id.info_returnretain):
+                returnInfo.show(getFragmentManager(), "returnInfo");
+                return;
+            default:
+                return;
+        }
 
     }
 

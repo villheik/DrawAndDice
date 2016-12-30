@@ -17,14 +17,32 @@
 
 
     <TextView
-        android:id="@+id/dice_results"
+        android:id="@+id/dice_results0"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="60dp"
-        android:text="TULOKSET TÄHÄN"
         android:textStyle="bold"
-        android:textAlignment="center"/>
+        android:textAlignment="center"
+        android:textSize="40sp"/>
+    <TextView
+        android:id="@+id/dice_results1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:layout_gravity="center"/>
+    <TextView
+        android:id="@+id/dice_results2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:layout_gravity="center"/>
+    <TextView
+        android:id="@+id/dice_results3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:layout_gravity="center"/>
 
     <RelativeLayout
         android:orientation="vertical"

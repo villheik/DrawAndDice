@@ -3,7 +3,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:layout_marginLeft="30dp"
+    android:layout_marginRight="30dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,30 +16,31 @@
 
         <TextView
             style="@style/questionMark"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/info_deck_amount"
             android:clickable="true"
             android:text="@string/questionmark"
-
+            android:layout_weight="0.5"
+            android:layout_gravity="center_vertical"
             />
 
 
         <TextView
             style="@style/infoText"
             android:id="@+id/text_deck_amount"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/deckAmountText"
-            android:layout_weight="1"
+            android:layout_weight="3"
+            android:layout_gravity="center_vertical"
             />
 
         <NumberPicker
             android:id="@+id/deckAmountChooser"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:layout_marginRight="30dp"
             >
         </NumberPicker>
     </LinearLayout>
@@ -49,11 +52,12 @@
 
         <TextView
             style="@style/questionMark"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/info_jokers"
             android:clickable="true"
             android:text="@string/questionmark"
+            android:layout_weight="0.5"
 
             />
 
@@ -63,15 +67,14 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/jokers"
-            android:layout_weight="1"
+            android:layout_weight="3"
             />
 
         <Switch
             android:id="@+id/jokerChooser"
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:layout_marginRight="30dp"
             />
     </LinearLayout>
     <LinearLayout
@@ -81,29 +84,29 @@
 
         <TextView
             style="@style/questionMark"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/info_returnretain"
             android:clickable="true"
             android:text="@string/questionmark"
+            android:layout_weight="0.5"
             />
 
 
         <TextView
             style="@style/infoText"
             android:id="@+id/text_returnretain"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/returnretain"
-            android:layout_weight="1"
+            android:layout_weight="3"
             />
 
         <Switch
             android:id="@+id/returnChooser"
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:layout_marginRight="30dp"
             />
 
 

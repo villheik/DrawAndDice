@@ -38,7 +38,6 @@
         <activity android:name=".diceSettings"
             android:screenOrientation="portrait"/>
 
-
     </application>
 
 </manifest>

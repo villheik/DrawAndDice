@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -15,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 
 /**
@@ -26,7 +26,7 @@ public class cardView extends AppCompatActivity implements View.OnClickListener 
     private ImageButton drawButton;
     private ImageView currentCard;
     private ImageView previousCard;
-    private boolean firstDraw = true;
+
 
     private final static int[] deck = new int[] {
             R.drawable.ic_ca, R.drawable.ic_c2, R.drawable.ic_c3, R.drawable.ic_c4, R.drawable.ic_c5, R.drawable.ic_c6, R.drawable.ic_c7, R.drawable.ic_c8, R.drawable.ic_c9, R.drawable.ic_c10, R.drawable.ic_cj, R.drawable.ic_cq, R.drawable.ic_ck,
@@ -53,11 +53,15 @@ public class cardView extends AppCompatActivity implements View.OnClickListener 
         return pref.getBoolean("returnCards", true);
     }
 
-    private static void deckBuilder(int deck_amount) {
+    private static void deckBuilder(int deck_amount, boolean joker) {
 
         for (int i=1; i<=deck_amount; i++){
             for (int j=0; j<deck.length; j++)
                 decks.add(deck[j]);
+            if (joker){
+                decks.add(R.drawable.ic_j1);
+                decks.add(R.drawable.ic_j2);
+            }
         }
     }
 
@@ -65,8 +69,6 @@ public class cardView extends AppCompatActivity implements View.OnClickListener 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.card_view);
-
-
 
         drawButton      = (ImageButton)findViewById(R.id.notFlipped);
         currentCard     = (ImageView)findViewById(R.id.flipped);
@@ -77,12 +79,12 @@ public class cardView extends AppCompatActivity implements View.OnClickListener 
         Toolbar cardViewBar = (Toolbar) findViewById(R.id.cardBar);
         setSupportActionBar(cardViewBar);
 
-        deckBuilder(getDeckAmount());
+        deckBuilder(getDeckAmount(), getJokerBool());
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.appbar, menu);
+        getMenuInflater().inflate(R.menu.appbarcards, menu);
 
        return true;
     }
@@ -90,6 +92,10 @@ public class cardView extends AppCompatActivity implements View.OnClickListener 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+            case R.id.action_refresh:
+                resetDeck();
+                Toast.makeText(getApplicationContext(), "Deck reshuffled", Toast.LENGTH_SHORT).show();
+                return true;
             case R.id.action_settings:
                 Intent intentSettings = new Intent(this, cardSettings.class);
                 cardView.this.startActivity(intentSettings);
@@ -98,32 +104,54 @@ public class cardView extends AppCompatActivity implements View.OnClickListener 
                 return super.onOptionsItemSelected(item);
         }
     }
+    //Seuraava kortti, joka vedetään satunnaisesti pakasta.  Sekoittaessa pakka myös seuraava kortti nollataan
+    int next = -1;
+    private boolean firstDraw = true;
+    private void resetDeck(){
+        next = -1;
+        firstDraw = true;
+        decks.clear();
+        deckBuilder(getDeckAmount(), getJokerBool());
+        drawButton.setImageResource(R.drawable.ic_background);
+        if (!drawButton.isClickable()) drawButton.setClickable(true);
+
+        previousCard.setImageResource(R.drawable.ic_previouscard);
+        currentCard.setImageResource(R.drawable.ic_draw);
+    }
 
     private final static Random random = new Random();
 
     @Override
     public void onClick(View v) {
-        if (decks.size() != 0)  drawCard();
+        //Jos pakassa yli yksi kortti jäljellä
+        if (decks.size() > 1)  drawCard(false);
+        //Vain yksi kortti jäljellä: asetetaan nykyiseksi kortiksi viimeinen kortti
         else {
+            currentCard.setImageResource(decks.get(0));
+            int imageTag = (Integer)currentCard.getTag();
+            previousCard.setImageResource(imageTag);
             drawButton.setImageResource(R.drawable.ic_empty);
             drawButton.setClickable(false);
         }
     }
 
-    int next = 0;
+
 
     //Otetaan pakasta kortti, jos pakka ei tyhjä. Jos ei kyseessä ensimmäinen veto, niin näytetään myös edellinen kortti
-    private void drawCard() {
+    private void drawCard(boolean lastCard) {
         if (!firstDraw){
-            previousCard.setImageResource(decks.get(next));
+            int imageTag = (Integer)currentCard.getTag();
+            previousCard.setImageResource(imageTag);
         }
         else firstDraw = false;
 
-        next = random.nextInt(decks.size());
+            next = random.nextInt(decks.size());
+
         currentCard.setImageResource(decks.get(next));
+        currentCard.setTag(decks.get(next));
 
         //Jos korttia ei palauteta pakkaan
-        if (!getReturnBool()) decks.remove(next);
+        if (!getReturnBool())
+            decks.remove(next);
     }
-
 }
