@@ -8,9 +8,10 @@
     <string name="questionmark">\?</string>
     <string name="deckAmountText">Amount of decks used\?</string>
     <string name="jokers">Jokers\?</string>
-    <string name="returnretain">Return or retain\?</string>
+    <string name="returnretain">Return card to deck\?</string>
     <string name="diceAmountText">Amount of dice\?</string>
     <string name="typeOfDice">Type of dice\?</string>
     <string name="about">DRAW \u0026 DICE\n\nVERSION b0.1\nVILLE HEIKKINEN\nVILLE SIIKALUOMA\n\nKÄYTTÖLIITTYMÄOHJELMOINTI 2016</string>
     <string name="settings">Settings</string>
+    <string name="appPref">applicationPreferences</string>
 </resources>

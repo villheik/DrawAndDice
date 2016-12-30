@@ -33,7 +33,7 @@
             />
 
         <NumberPicker
-            android:id="@+id/deckChooser"
+            android:id="@+id/deckAmountChooser"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -99,7 +99,7 @@
             />
 
         <Switch
-            android:id="@+id/returnchooser"
+            android:id="@+id/returnChooser"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_weight="1"

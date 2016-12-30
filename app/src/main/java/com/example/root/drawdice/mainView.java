@@ -1,7 +1,7 @@
 package com.example.root.drawdice;
 
-import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -19,6 +19,18 @@ public class mainView extends AppCompatActivity {
         setContentView(R.layout.mainview);
         Toolbar mainMenuBar = (Toolbar) findViewById(R.id.menuBar);
         setSupportActionBar(mainMenuBar);
+
+        //Luodaan asetukset
+        SharedPreferences pref = getSharedPreferences(getString(R.string.appPref), MODE_PRIVATE);
+        SharedPreferences.Editor editor = pref.edit();
+
+        editor.putInt("deckAmount", 1);
+        editor.putBoolean("jokers", true);
+        editor.putBoolean("returnCards", true);
+        editor.putInt("diceType", 6);
+        editor.putInt("diceAmount", 1);
+
+        editor.apply();
 
         //Siirtyminen korttinäkymään
         final Button cardButton = (Button) findViewById(R.id.cards_button);
