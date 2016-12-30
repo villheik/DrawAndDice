@@ -8,10 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 
-/**
- * Created by root on 25.12.2016.
- */
-
+//Ohjelman päänäkymä, jonka kautta navigoidaan eri näkymiin
 public class mainView extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {

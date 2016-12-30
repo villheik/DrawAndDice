@@ -1,14 +1,11 @@
 package com.example.root.drawdice;
 
 import android.os.Bundle;
-import android.app.Activity;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
-/**
- * Created by keios on 29.12.2016.
- */
 
+//Näkymä, jossa näkyy sovelluksen tiedot ja tekijät
 public class aboutView extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {

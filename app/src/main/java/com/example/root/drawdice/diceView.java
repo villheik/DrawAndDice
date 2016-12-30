@@ -14,10 +14,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Random;
 
-/**
- * Created by keios on 29.12.2016.
- */
-
+//Näkymä nopanheitolle
 public class diceView extends AppCompatActivity implements View.OnClickListener {
 
 
@@ -69,7 +66,7 @@ public class diceView extends AppCompatActivity implements View.OnClickListener 
         int result = 0;
 
         for (int i=0; i <pref.getInt("diceAmount", 1); i++ ){
-            //Random arpoo luvun väliltä 0-n. Jos nopan tyyli 6, otetaan väliksi 0-5 ja lisätään lopussa 1
+            //Random arpoo luvun väliltä 0-n. Jos nopan tyyli d6, otetaan väliksi 0-5 ja lisätään lopussa 1
             result += random.nextInt(pref.getInt("diceType", 6)) + 1;
         }
         results3.setText(results2.getText());

@@ -12,10 +12,7 @@ import android.widget.NumberPicker;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-/**
- * Created by keios on 29.12.2016.
- */
-
+//Noppa-asetukset
 public class diceSettings extends Activity implements View.OnClickListener{
     NumberPicker diceAmount; Spinner diceType;
     TextView diceAmountToolTip; TextView diceTypeToolTip;
@@ -25,6 +22,7 @@ public class diceSettings extends Activity implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dice_options);
 
+        //Haetaan talletetut- tai oletusasetukset
         final SharedPreferences prefs = getSharedPreferences(getString(R.string.appPref), MODE_PRIVATE);
         final SharedPreferences.Editor editor = prefs.edit();
 
@@ -45,6 +43,7 @@ public class diceSettings extends Activity implements View.OnClickListener{
         diceAmount.setValue(diceAmountPref);
         diceType.setSelection(diceTypeSpinnerPos);
 
+        //Kuuntelija noppien lukumäärän valinnalle (NumberPicker)
         diceAmount.setOnValueChangedListener(new NumberPicker.OnValueChangeListener()
         {
             @Override
@@ -54,17 +53,21 @@ public class diceSettings extends Activity implements View.OnClickListener{
             }
         });
 
+        //Kuuntelija noppien tyypin valinnalle (Spinner)
         diceType.setOnItemSelectedListener(new Spinner.OnItemSelectedListener()
         {
             @Override
             public void onItemSelected(AdapterView<?> parent, View v, int pos, long id){
                 int value = (Integer) parent.getItemAtPosition(pos);
+                //Nopan tyyppi (4, 6, 8, etc.)
                 editor.putInt("diceType", value);
+                //Sijainti Spinner arrayssa (4=0, 6=1, ...)
                 editor.putInt("diceTypeSpinnerPos", pos);
                 editor.apply();
 
                 diceType.setSelection(pos);
             }
+                //Mitään ei valittu, asetetaan oletusarvo (d6)
             public void onNothingSelected(AdapterView<?> parent){
                 diceType.setSelection(prefs.getInt("diceTypeSpinnerPos", 1));
             }

@@ -17,17 +17,13 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 
-/**
- * Created by keios on 28.12.2016.
- */
-
 public class cardView extends AppCompatActivity implements View.OnClickListener {
 
     private ImageButton drawButton;
     private ImageView currentCard;
     private ImageView previousCard;
 
-
+    //Korttipakka
     private final static int[] deck = new int[] {
             R.drawable.ic_ca, R.drawable.ic_c2, R.drawable.ic_c3, R.drawable.ic_c4, R.drawable.ic_c5, R.drawable.ic_c6, R.drawable.ic_c7, R.drawable.ic_c8, R.drawable.ic_c9, R.drawable.ic_c10, R.drawable.ic_cj, R.drawable.ic_cq, R.drawable.ic_ck,
             R.drawable.ic_ha, R.drawable.ic_h2, R.drawable.ic_h3, R.drawable.ic_h4, R.drawable.ic_h5, R.drawable.ic_h6, R.drawable.ic_h7, R.drawable.ic_h8, R.drawable.ic_h9, R.drawable.ic_h10, R.drawable.ic_hj, R.drawable.ic_hq, R.drawable.ic_hk,
@@ -35,26 +31,30 @@ public class cardView extends AppCompatActivity implements View.OnClickListener 
             R.drawable.ic_da, R.drawable.ic_d2, R.drawable.ic_d3, R.drawable.ic_d4, R.drawable.ic_d5, R.drawable.ic_d6, R.drawable.ic_d7, R.drawable.ic_d8, R.drawable.ic_d9, R.drawable.ic_d10, R.drawable.ic_dj, R.drawable.ic_dq, R.drawable.ic_dk
     };
 
+    //Arraylist useammalle korttipakalle
     private static List<Integer> decks = new ArrayList<>();
 
+    //Montako korttipakkaa
     private int getDeckAmount(){
         SharedPreferences pref = getSharedPreferences(getString(R.string.appPref), MODE_PRIVATE);
 
         return pref.getInt("deckAmount", 1);
     }
 
+    //Käytetäänkö jokereita
     private boolean getJokerBool(){
         SharedPreferences pref = getSharedPreferences(getString(R.string.appPref), MODE_PRIVATE);
         return pref.getBoolean("jokers", true);
     }
 
+    //Palautetaanko vedetty kortti pakkaan
     private boolean getReturnBool(){
         SharedPreferences pref = getSharedPreferences(getString(R.string.appPref), MODE_PRIVATE);
         return pref.getBoolean("returnCards", true);
     }
 
+    //Rakennetaan pakka edellä asetettujen arvojen perusteella
     private static void deckBuilder(int deck_amount, boolean joker) {
-
         for (int i=1; i<=deck_amount; i++){
             for (int j=0; j<deck.length; j++)
                 decks.add(deck[j]);
@@ -82,6 +82,7 @@ public class cardView extends AppCompatActivity implements View.OnClickListener 
         deckBuilder(getDeckAmount(), getJokerBool());
     }
 
+    //Yläpalkki korttinäkymään
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.appbarcards, menu);
@@ -89,13 +90,16 @@ public class cardView extends AppCompatActivity implements View.OnClickListener 
        return true;
     }
 
+    //Yläpalkin toiminnot
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+            //Korttipakan sekoitus
             case R.id.action_refresh:
                 resetDeck();
                 Toast.makeText(getApplicationContext(), "Deck reshuffled", Toast.LENGTH_SHORT).show();
                 return true;
+            //Asetukset
             case R.id.action_settings:
                 Intent intentSettings = new Intent(this, cardSettings.class);
                 cardView.this.startActivity(intentSettings);
@@ -125,7 +129,7 @@ public class cardView extends AppCompatActivity implements View.OnClickListener 
     public void onClick(View v) {
         //Jos pakassa yli yksi kortti jäljellä
         if (decks.size() > 1)  drawCard(false);
-        //Vain yksi kortti jäljellä: asetetaan nykyiseksi kortiksi viimeinen kortti
+        //Vain yksi kortti jäljellä: asetetaan nykyiseksi kortiksi viimeinen kortti. Asetetaan korttien vetämisnappula epäaktiiviseksi
         else {
             currentCard.setImageResource(decks.get(0));
             int imageTag = (Integer)currentCard.getTag();

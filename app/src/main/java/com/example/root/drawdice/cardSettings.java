@@ -10,9 +10,6 @@ import android.widget.NumberPicker;
 import android.widget.Switch;
 import android.widget.TextView;
 
-/**
- * Created by keios on 29.12.2016.
- */
 
 //Aktiviteetti korttien asetuksille (pakkojen määrä, jokerit ja palautetaanko vedetty kortti pakkaan)
 public class cardSettings extends Activity implements View.OnClickListener{
@@ -25,17 +22,19 @@ public class cardSettings extends Activity implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.cards_options);
 
+        //Haetaan tallennetut asetukset
         SharedPreferences prefs = getSharedPreferences(getString(R.string.appPref), MODE_PRIVATE);
         final SharedPreferences.Editor editor = prefs.edit();
-
         deckAmount = (NumberPicker) findViewById(R.id.deckAmountChooser);
         removeOrRetain = (Switch) findViewById(R.id.returnChooser);
         jokers = (Switch) findViewById(R.id.jokerChooser);
 
+        //Asetetaan min ja max arvot pakkojen lukumäärän valitsijalle
         deckAmount.setMinValue(1);
         deckAmount.setMaxValue(5);
         deckAmount.setWrapSelectorWheel(false);
 
+        //Haetaan ja asetetaan tallennetut tai oletusarvot asetuksille
         int deckAmountPref = prefs.getInt("deckAmount", 1);
         boolean jokerPref = prefs.getBoolean("jokers", true);
         boolean returnPref = prefs.getBoolean("returnCards", true);
@@ -52,6 +51,7 @@ public class cardSettings extends Activity implements View.OnClickListener{
         jokersToolTip.setOnClickListener(this);
         returnToolTip.setOnClickListener(this);
 
+        //Kuuntelija pakkojen lukumäärien valitsijalle (NumberPicker)
         deckAmount.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
             public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
@@ -60,6 +60,7 @@ public class cardSettings extends Activity implements View.OnClickListener{
             }
         });
 
+        //Kuuntelija jokerien valitsijalle (Switch)
         jokers.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -68,6 +69,7 @@ public class cardSettings extends Activity implements View.OnClickListener{
             }
         });
 
+        //Kuuntelija korttien palautuksen valinnalle (Switch)
         removeOrRetain.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -79,6 +81,7 @@ public class cardSettings extends Activity implements View.OnClickListener{
 
     }
 
+    //Ylikuormitetaan onClick tukemaan tooltippien avausta
     @Override
     public void onClick(View v){
         DialogFragment deckAmountInfo = new deckAmountDialog();

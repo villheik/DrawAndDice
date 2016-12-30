@@ -1,7 +1,5 @@
 package com.example.root.drawdice;
 
-import android.app.Activity;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -11,10 +9,7 @@ import android.widget.TextView;
 
 import java.util.Random;
 
-/**
- * Created by keios on 29.12.2016.
- */
-
+//Näkymä kolikonheitolle
 public class coinView extends AppCompatActivity implements View.OnClickListener{
     ImageButton flipCoin;
     @Override
@@ -31,6 +26,7 @@ public class coinView extends AppCompatActivity implements View.OnClickListener{
 
     private final static Random random = new Random();
 
+    //Uusin heitto siirtyy näkymässä ylimmäksi. Edelliset heitot siirtyvät listassa alaspäin
     @Override
     public void onClick(View v){
         TextView results0 = (TextView) findViewById(R.id.coin_results0);
@@ -38,7 +34,6 @@ public class coinView extends AppCompatActivity implements View.OnClickListener{
         TextView results2 = (TextView) findViewById(R.id.coin_results2);
         TextView results3 = (TextView) findViewById(R.id.coin_results3);
         int result = 0;
-
 
         result = random.nextInt(2);
 

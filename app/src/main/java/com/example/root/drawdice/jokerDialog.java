@@ -6,10 +6,8 @@ import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.os.Bundle;
 
-/**
- * Created by keios on 30.12.2016.
- */
 
+//Dialogilla tehty tooltip korttiasetuksiin jokerien valitsemiselle
 public class jokerDialog extends DialogFragment {
 
     @Override
