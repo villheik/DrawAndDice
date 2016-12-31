@@ -11,7 +11,7 @@
     <string name="returnretain">Return card to deck</string>
     <string name="diceAmountText">Amount of dice</string>
     <string name="typeOfDice">Type of dice</string>
-    <string name="about">DRAW \u0026 DICE\n\nVERSION 1.01\nVILLE HEIKKINEN\nVILLE SIIKALUOMA\n\nKÄYTTÖLIITTYMÄOHJELMOINTI 2016</string>
+    <string name="about">DRAW \u0026 DICE\n\nVERSION 1.02\nVILLE HEIKKINEN\nVILLE SIIKALUOMA\n\nKÄYTTÖLIITTYMÄOHJELMOINTI 2016</string>
     <string name="settings">Settings</string>
     <string name="appPref">applicationPreferences</string>
     <string name="refreshButtonText">Reshuffle pack</string>

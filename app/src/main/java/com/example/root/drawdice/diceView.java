@@ -84,7 +84,6 @@ public class diceView extends AppCompatActivity implements View.OnClickListener 
         //Jos vain yksi noppa (tulokseen noppa x)
         else results_string += results.get(0);
 
-
         results3.setText(results2.getText());
         results2.setText(results1.getText());
         results1.setText(results0.getText());
