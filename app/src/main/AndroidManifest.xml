@@ -33,9 +33,11 @@
             android:screenOrientation="portrait"/>
 
         <activity android:name=".cardSettings"
+            android:label="Card settings"
             android:screenOrientation="portrait"/>
 
         <activity android:name=".diceSettings"
+            android:label="Dice settings"
             android:screenOrientation="portrait"/>
 
     </application>

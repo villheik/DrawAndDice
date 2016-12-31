@@ -1,9 +1,10 @@
 package com.example.root.drawdice;
 
-import android.app.Activity;
 import android.app.DialogFragment;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.NumberPicker;
@@ -12,7 +13,7 @@ import android.widget.TextView;
 
 
 //Aktiviteetti korttien asetuksille (pakkojen määrä, jokerit ja palautetaanko vedetty kortti pakkaan)
-public class cardSettings extends Activity implements View.OnClickListener{
+public class cardSettings extends AppCompatActivity implements View.OnClickListener{
     NumberPicker deckAmount;
     Switch removeOrRetain; Switch jokers;
     TextView deckAmountToolTip; TextView jokersToolTip; TextView returnToolTip;
@@ -78,7 +79,8 @@ public class cardSettings extends Activity implements View.OnClickListener{
             }
         });
 
-
+        Toolbar cardViewBar = (Toolbar) findViewById(R.id.cardOptionsBar);
+        setSupportActionBar(cardViewBar);
     }
 
     //Ylikuormitetaan onClick tukemaan tooltippien avausta

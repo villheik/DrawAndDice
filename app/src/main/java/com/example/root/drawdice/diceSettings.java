@@ -1,10 +1,10 @@
 package com.example.root.drawdice;
 
-import android.app.Activity;
 import android.app.DialogFragment;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.Menu;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -13,7 +13,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 //Noppa-asetukset
-public class diceSettings extends Activity implements View.OnClickListener{
+public class diceSettings extends AppCompatActivity implements View.OnClickListener{
     NumberPicker diceAmount; Spinner diceType;
     TextView diceAmountToolTip; TextView diceTypeToolTip;
 
@@ -50,6 +50,7 @@ public class diceSettings extends Activity implements View.OnClickListener{
             public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
                 editor.putInt("diceAmount", newVal);
                 editor.apply();
+
             }
         });
 
@@ -79,6 +80,9 @@ public class diceSettings extends Activity implements View.OnClickListener{
 
         diceAmountToolTip.setOnClickListener(this);
         diceTypeToolTip.setOnClickListener(this);
+
+        Toolbar cardViewBar = (Toolbar) findViewById(R.id.diceOptionsBar);
+        setSupportActionBar(cardViewBar);
     }
 
     @Override
