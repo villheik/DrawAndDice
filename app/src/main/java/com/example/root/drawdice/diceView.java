@@ -63,16 +63,32 @@ public class diceView extends AppCompatActivity implements View.OnClickListener 
         TextView results1 = (TextView) findViewById(R.id.dice_results1);
         TextView results2 = (TextView) findViewById(R.id.dice_results2);
         TextView results3 = (TextView) findViewById(R.id.dice_results3);
-        int result = 0;
-
+        ArrayList<Integer> results = new ArrayList<Integer>();
         for (int i=0; i <pref.getInt("diceAmount", 1); i++ ){
             //Random arpoo luvun väliltä 0-n. Jos nopan tyyli d6, otetaan väliksi 0-5 ja lisätään lopussa 1
-            result += random.nextInt(pref.getInt("diceType", 6)) + 1;
+            results.add(random.nextInt(pref.getInt("diceType", 6)) + 1);
         }
+
+        String results_string = "";
+        int finalResult= 0;
+
+        //Jos useampi kuin yksi noppa (tulokseen noppa x, noppa y = summa z)
+        if (results.size() > 1) {
+            for (int i = 0; i < results.size(); i++) {
+                results_string += results.get(i).toString();
+                if (i < results.size() - 1) results_string += ", ";
+                finalResult += results.get(i);
+            }
+            results_string += " = " + finalResult;
+        }
+        //Jos vain yksi noppa (tulokseen noppa x)
+        else results_string += results.get(0);
+
+
         results3.setText(results2.getText());
         results2.setText(results1.getText());
         results1.setText(results0.getText());
-        results0.setText(String.valueOf(result));
+        results0.setText(String.valueOf(results_string));
 
     }
 
